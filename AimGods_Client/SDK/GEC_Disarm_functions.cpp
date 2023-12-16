@@ -1,0 +1,44 @@
+#pragma once
+
+// Dumped with Dumper-7!
+
+
+#include "../SDK.hpp"
+
+namespace SDK
+{
+//---------------------------------------------------------------------------------------------------------------------
+// FUNCTIONS
+//---------------------------------------------------------------------------------------------------------------------
+
+
+// BlueprintGeneratedClass GEC_Disarm.GEC_Disarm_C
+// (None)
+
+class UClass* UGEC_Disarm_C::StaticClass()
+{
+	static class UClass* Clss = nullptr;
+
+	if (!Clss)
+		Clss = UObject::FindClassFast("GEC_Disarm_C");
+
+	return Clss;
+}
+
+
+// GEC_Disarm_C GEC_Disarm.Default__GEC_Disarm_C
+// (Public, ClassDefaultObject, ArchetypeObject, WasLoaded, LoadCompleted)
+
+class UGEC_Disarm_C* UGEC_Disarm_C::GetDefaultObj()
+{
+	static class UGEC_Disarm_C* Default = nullptr;
+
+	if (!Default)
+		Default = static_cast<UGEC_Disarm_C*>(UGEC_Disarm_C::StaticClass()->DefaultObject);
+
+	return Default;
+}
+
+}
+
+

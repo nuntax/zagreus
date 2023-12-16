@@ -1,0 +1,255 @@
+﻿namespace Launcher
+{
+    partial class Launcher
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            comboBox1 = new ComboBox();
+            button1 = new Button();
+            button2 = new Button();
+            maskedTextBox1 = new MaskedTextBox();
+            button3 = new Button();
+            button4 = new Button();
+            comboBox2 = new ComboBox();
+            label8 = new Label();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.BorderStyle = BorderStyle.Fixed3D;
+            label1.Location = new Point(386, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(1, 450);
+            label1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.HighlightText;
+            label2.Location = new Point(12, 30);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Client";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.HighlightText;
+            label3.Location = new Point(408, 30);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 30);
+            label3.TabIndex = 2;
+            label3.Text = "Server";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.HighlightText;
+            label4.Location = new Point(408, 73);
+            label4.Name = "label4";
+            label4.Size = new Size(94, 21);
+            label4.TabIndex = 3;
+            label4.Text = "Installation:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.HighlightText;
+            label5.Location = new Point(12, 73);
+            label5.Name = "label5";
+            label5.Size = new Size(94, 21);
+            label5.TabIndex = 4;
+            label5.Text = "Installation:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.HighlightText;
+            label6.Location = new Point(12, 111);
+            label6.Name = "label6";
+            label6.Size = new Size(28, 21);
+            label6.TabIndex = 5;
+            label6.Text = "IP:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.HighlightText;
+            label7.Location = new Point(408, 111);
+            label7.Name = "label7";
+            label7.Size = new Size(58, 21);
+            label7.TabIndex = 6;
+            label7.Text = "Mode:";
+            label7.Click += label7_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "1vs1", "2vs2" });
+            comboBox1.Location = new Point(609, 109);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 7;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(288, 74);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 8;
+            button1.Text = "Select";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(655, 71);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 9;
+            button2.Text = "Select";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new Point(263, 113);
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(100, 23);
+            maskedTextBox1.TabIndex = 10;
+            maskedTextBox1.TextChanged += maskedTextBox1_TextChanged;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(12, 457);
+            button3.Name = "button3";
+            button3.Size = new Size(351, 23);
+            button3.TabIndex = 11;
+            button3.Text = "Connect";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(408, 457);
+            button4.Name = "button4";
+            button4.Size = new Size(322, 23);
+            button4.TabIndex = 12;
+            button4.Text = "Host";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "egypt_p", "colosseum_p" });
+            comboBox2.Location = new Point(609, 149);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 14;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.HighlightText;
+            label8.Location = new Point(408, 151);
+            label8.Name = "label8";
+            label8.Size = new Size(47, 21);
+            label8.TabIndex = 13;
+            label8.Text = "Map:";
+            // 
+            // Launcher
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(32, 32, 32);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(756, 508);
+            Controls.Add(comboBox2);
+            Controls.Add(label8);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(maskedTextBox1);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(comboBox1);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            DoubleBuffered = true;
+            Name = "Launcher";
+            RightToLeftLayout = true;
+            Text = "Form1";
+            FormClosing += Launcher_FormClosing;
+            Load += Launcher_Load;
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private ComboBox comboBox1;
+        private Button button1;
+        private Button button2;
+        private MaskedTextBox maskedTextBox1;
+        private Button button3;
+        private Button button4;
+        private ComboBox comboBox2;
+        private Label label8;
+    }
+}

@@ -1,0 +1,47 @@
+#pragma once
+
+// Dumped with Dumper-7!
+
+
+namespace SDK
+{
+//---------------------------------------------------------------------------------------------------------------------
+// CLASSES
+//---------------------------------------------------------------------------------------------------------------------
+
+// 0x58 (0x270 - 0x218)
+// BlueprintGeneratedClass BP_PropsHome.BP_PropsHome_C
+class ABP_PropsHome_C : public AActor
+{
+public:
+	struct FPointerToUberGraphFrame              UberGraphFrame;                                    // 0x218(0x8)(ZeroConstructor, Transient, DuplicateTransient)
+	class UPointLightComponent*                  OilLampBLight;                                     // 0x220(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UPointLightComponent*                  OilLampALight;                                     // 0x228(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UParticleSystemComponent*              FXFlameOilLampB2;                                  // 0x230(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UParticleSystemComponent*              FXFlameOilLampB1;                                  // 0x238(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UParticleSystemComponent*              FXFlameOilLampA;                                   // 0x240(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UPointLightComponent*                  LightFire;                                         // 0x248(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UParticleSystemComponent*              FXFire;                                            // 0x250(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                  Prop;                                              // 0x258(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                       DefaultSceneRoot;                                  // 0x260(0x8)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	enum class EMeshes_Props                     Prop_Choice;                                       // 0x268(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                         Random_Z_Rotation;                                 // 0x269(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                         Add_Pedestal_to_Statues;                           // 0x26A(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                         Add_Fern_to_Planters;                              // 0x26B(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                         Enable_Fire_on_Lamps;                              // 0x26C(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                         Gold_Kitchenware;                                  // 0x26D(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	enum class Enum_StyleABCD                    Fire_Style;                                        // 0x26E(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	enum class Enum_StyleAB                      Curtain_Color;                                     // 0x26F(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+	static class UClass* StaticClass();
+	static class ABP_PropsHome_C* GetDefaultObj();
+
+	void UserConstructionScript(class UStaticMeshComponent* ChosenFern, int32 CurrentPropIndex, int32 CurtainMaterialIndex, const TArray<class UMaterialInstance*>& CurtainMaterials, const TArray<class UParticleSystem*>& FireArray, const class FString& PropName, const TArray<class UStaticMesh*>& MeshesArray, const struct FTransform& Temp_struct_Variable, const struct FTransform& Temp_struct_Variable_1, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_1, const struct FTransform& Temp_struct_Variable_2, const struct FTransform& Temp_struct_Variable_3, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_2, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_3, const struct FTransform& Temp_struct_Variable_4, const struct FTransform& Temp_struct_Variable_5, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_4, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_5, const struct FTransform& Temp_struct_Variable_6, const struct FTransform& Temp_struct_Variable_7, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_6, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_7, const struct FTransform& Temp_struct_Variable_8, const struct FTransform& Temp_struct_Variable_9, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_8, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_9, const struct FTransform& Temp_struct_Variable_10, const struct FTransform& Temp_struct_Variable_11, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_10, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_11, const struct FTransform& Temp_struct_Variable_12, const struct FTransform& Temp_struct_Variable_13, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_12, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_13, const struct FTransform& Temp_struct_Variable_14, const struct FTransform& Temp_struct_Variable_15, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_14, class UStaticMeshComponent* CallFunc_AddComponent_ReturnValue_15, TArray<class UMaterialInstance*>& K2Node_MakeArray_Array, TArray<class UParticleSystem*>& K2Node_MakeArray_Array_1, TArray<class UStaticMesh*>& K2Node_MakeArray_Array_2, bool CallFunc_Contains_ReturnValue, bool CallFunc_Contains_ReturnValue_1, int32 CallFunc_Conv_ByteToInt_ReturnValue, int32 CallFunc_Conv_ByteToInt_ReturnValue_1, int32 CallFunc_Add_IntInt_ReturnValue, class UMaterialInstance* CallFunc_Array_Get_Item, int32 CallFunc_Conv_ByteToInt_ReturnValue_2, int32 CallFunc_Add_IntInt_ReturnValue_1, int32 CallFunc_Add_IntInt_ReturnValue_2, class UMaterialInstance* CallFunc_Array_Get_Item_1, class UMaterialInstance* CallFunc_Array_Get_Item_2, int32 CallFunc_Conv_ByteToInt_ReturnValue_3, int32 CallFunc_Add_IntInt_ReturnValue_3, class UMaterialInstance* CallFunc_Array_Get_Item_3, class UMaterialInterface* CallFunc_GetMaterial_ReturnValue, bool CallFunc_Contains_ReturnValue_2, const class FString& CallFunc_GetDisplayName_ReturnValue, bool CallFunc_Contains_ReturnValue_3, bool CallFunc_Contains_ReturnValue_4, bool CallFunc_Contains_ReturnValue_5, bool CallFunc_Contains_ReturnValue_6, class UMaterialInterface* CallFunc_GetMaterial_ReturnValue_1, const class FString& CallFunc_GetDisplayName_ReturnValue_1, bool CallFunc_Contains_ReturnValue_7, int32 CallFunc_Conv_ByteToInt_ReturnValue_4, class UParticleSystem* CallFunc_Array_Get_Item_4, bool CallFunc_Contains_ReturnValue_8, const struct FRotator& CallFunc_RandomRotator_ReturnValue, bool CallFunc_RandomBool_ReturnValue, float CallFunc_BreakRotator_Roll, float CallFunc_BreakRotator_Pitch, float CallFunc_BreakRotator_Yaw, const struct FRotator& CallFunc_MakeRotator_ReturnValue, bool CallFunc_Contains_ReturnValue_9, bool CallFunc_Contains_ReturnValue_10, const struct FHitResult& CallFunc_K2_AddLocalOffset_SweepHitResult, bool CallFunc_Contains_ReturnValue_11, bool CallFunc_EqualEqual_IntInt_ReturnValue, bool CallFunc_SetStaticMesh_ReturnValue, bool CallFunc_SetStaticMesh_ReturnValue_1, bool CallFunc_SetStaticMesh_ReturnValue_2, bool CallFunc_Contains_ReturnValue_12, bool CallFunc_Contains_ReturnValue_13, bool CallFunc_Contains_ReturnValue_14, const class FString& CallFunc_GetEnumeratorUserFriendlyName_ReturnValue, int32 CallFunc_Conv_ByteToInt_ReturnValue_5, const struct FHitResult& CallFunc_K2_SetRelativeLocation_SweepHitResult, const struct FHitResult& CallFunc_K2_SetRelativeLocation_SweepHitResult_1, const struct FRotator& CallFunc_RandomRotator_ReturnValue_1, const struct FHitResult& CallFunc_K2_AddRelativeRotation_SweepHitResult, float CallFunc_BreakRotator_Roll_1, float CallFunc_BreakRotator_Pitch_1, float CallFunc_BreakRotator_Yaw_1, const struct FRotator& CallFunc_MakeRotator_ReturnValue_1, const struct FHitResult& CallFunc_K2_AddRelativeRotation_SweepHitResult_1, class UStaticMesh* CallFunc_Array_Get_Item_5, bool CallFunc_SetStaticMesh_ReturnValue_3);
+	void ReceiveBeginPlay();
+	void ReceiveTick(float DeltaSeconds);
+	void ExecuteUbergraph_BP_PropsHome(int32 EntryPoint, float K2Node_Event_DeltaSeconds);
+};
+
+}
+
+

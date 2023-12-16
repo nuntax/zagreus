@@ -1,0 +1,135 @@
+#include <csignal>
+#include <iostream>
+#include <windows.h>
+#include <libloaderapi.h>
+#include <Psapi.h>
+#include <future>
+#include <sstream>
+#include "Mem.h"
+#include <conio.h>
+
+#include "DebugMenu.h"
+#include "DX11Hook.h"
+#include "FunctionQueue.h"
+#include "Hooks.h"
+
+#define UE_BUILD_DEVELOPMENT 1
+#define LOG(msg) \
+std::cout << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
+
+void GetAllWindowsFromProcessID(DWORD dwProcessID, std::vector <HWND>& vhWnds)
+{
+    // find all hWnds (vhWnds) associated with a process id (dwProcessID)
+    HWND hCurWnd = NULL;
+    do
+    {
+        hCurWnd = FindWindowEx(NULL, hCurWnd, NULL, NULL);
+        DWORD dwProcID = 0;
+        GetWindowThreadProcessId(hCurWnd, &dwProcID);
+        if (dwProcID == dwProcessID)
+        {
+            vhWnds.push_back(hCurWnd);  // add the found hCurWnd to the vector
+            wprintf(L"Found hWnd %d\n", hCurWnd);
+        }
+    } while (hCurWnd != NULL);
+}
+
+std::vector<unsigned char> escapedHexStringToBytes(const std::string& escapedHexString) {
+    std::vector<unsigned char> bytes;
+
+    for (size_t i = 2; i < escapedHexString.length(); i += 4) {
+        std::string byteString = escapedHexString.substr(i, 2);
+        unsigned char byte = static_cast<unsigned char>(std::stoi(byteString, nullptr, 16));
+        bytes.push_back(byte);
+    }
+
+    return bytes;
+}
+
+DWORD WINAPI main(LPVOID lpReserved)
+{
+    
+    AllocConsole();
+    FILE* consoleIn, * consoleOut;
+    freopen_s(&consoleIn, "CONIN$", "r", stdin);
+    freopen_s(&consoleOut, "CONOUT$", "w", stdout);
+    std::cout << "AimGods Dev Build" << std::endl;
+    Hooks::HookFunctions();
+    DX11Hook::Init(DebugMenu::Render);
+    SDK::InitGObjects();
+    //get the current process id
+    const int pid = GetCurrentProcessId();
+    std::vector <HWND> vhWnds;
+    GetAllWindowsFromProcessID(pid, vhWnds);
+    for(auto hWnd : vhWnds)
+    {
+        SetWindowTextA(hWnd, "SERVER");
+	}
+
+    while(false)
+    {
+        
+        
+        std::string ida = "",mask = "", pattern = "";
+        std::cout << "ida: ";
+        std::getline(std::cin, ida);
+        bool once_per_byte = false;
+        pattern = "\\x";
+
+        for (int i = 0; i < ida.size(); i++) {
+            if (ida[i] == ' ')
+                pattern += "\\x";
+            else if (ida[i] == '?') {
+                mask += '?';
+                pattern += "00";
+            }
+            else {
+                pattern += ida[i];
+                if (!once_per_byte)
+                    mask += 'x';
+
+                once_per_byte = !once_per_byte;
+            }
+        }
+        auto bytes = escapedHexStringToBytes(pattern);
+        auto result = Mem::Scan(GetModuleHandleW(nullptr), bytes.data(), mask.c_str());
+        std::cout << "result: " << std::hex << result << std::endl;
+        
+    }
+    
+    
+    
+    //iterate through all uobjects
+    /*for (int i = 0; i < SDK::UObject::GObjects->Num(); i++) {
+        SDK::UObject* object = SDK::UObject::GObjects->GetByIndex(i);
+        if (object == nullptr)
+            continue;
+        if (object->IsA(SDK::UClass::StaticClass())) {
+            SDK::UClass* uclass = (SDK::UClass*)object;
+            if (uclass->GetName().find("BP_PlayerController_C") != std::string::npos) {
+                LOG("Found BP_PlayerController_C");
+                
+                LOG("Done");
+            }
+        }
+        LOG(object->GetName());
+        
+    }*/
+    
+    
+    return TRUE;
+}   
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
+{
+    DisableThreadLibraryCalls(hModule);
+    switch (ul_reason_for_call)
+    {
+    case DLL_PROCESS_ATTACH:
+        CreateThread(0,0, main, hModule, 0, nullptr);
+    case DLL_THREAD_ATTACH:
+    case DLL_THREAD_DETACH:
+    case DLL_PROCESS_DETACH:
+        break;
+    }
+    return TRUE;
+}
