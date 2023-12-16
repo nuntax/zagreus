@@ -44,13 +44,14 @@ namespace Launcher
             public string ip;
             public string mode;
             public string map;
+            public bool headless;
 
         }
         private void LoadFromSettings()
         {
             //load the settings.json file
-            
-           
+
+
             try
             {
                 var settings = File.ReadAllText("settings.json");
@@ -71,6 +72,7 @@ namespace Launcher
                 maskedTextBox1.Text = settingsJson.ip;
                 comboBox1.Text = settingsJson.mode;
                 comboBox2.Text = settingsJson.map;
+                checkBox1.Checked = settingsJson.headless;
                 if (serverinstallationpath != "")
                 {
                     button1.Text = "Set!";
@@ -86,32 +88,33 @@ namespace Launcher
             {
                 MessageBox.Show("Error while loading settings.json, no settings got loaded: " + e.Message);
                 File.Delete("settings.json");
-                
+
             }
-           
+
 
         }
 
-        
+
         private void SaveToSettings()
         {
             //save the settings.json file
             Settings settings = new Settings();
 
-            if(settings.serverpath != "")
+            if (settings.serverpath != "")
                 settings.serverpath = serverinstallationpath;
-            if(settings.clientpath != "")
+            if (settings.clientpath != "")
                 settings.clientpath = clientinstallationpath;
-            if(settings.ip != "")
+            if (settings.ip != "")
                 settings.ip = maskedTextBox1.Text;
-            if(settings.mode != "")
+            if (settings.mode != "")
                 settings.mode = comboBox1.Text;
-            if(settings.map != "")
+            if (settings.map != "")
                 settings.map = comboBox2.Text;
+            settings.headless = checkBox1.Checked;
             string json = JsonConvert.SerializeObject(settings);
             File.WriteAllText("settings.json", json);
 
-              
+
         }
         public Launcher()
         {
@@ -195,7 +198,8 @@ namespace Launcher
             }
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = serverinstallationpath + "\\AimGods-Win64-Shipping.exe";
-            startInfo.Arguments = "-NoEAC -nullrhi";
+            startInfo.Arguments = "-NoEAC " + (checkBox1.Checked ? "-nullrhi" :  "");
+            MessageBox.Show(startInfo.Arguments);
             Process aimgods = Process.Start(startInfo);
             while (true)
             {

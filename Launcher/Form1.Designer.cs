@@ -43,6 +43,8 @@
             button4 = new Button();
             comboBox2 = new ComboBox();
             label8 = new Label();
+            label9 = new Label();
+            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -202,6 +204,26 @@
             label8.TabIndex = 13;
             label8.Text = "Map:";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.HighlightText;
+            label9.Location = new Point(408, 191);
+            label9.Name = "label9";
+            label9.Size = new Size(80, 21);
+            label9.TabIndex = 15;
+            label9.Text = "Headless:";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(715, 197);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 16;
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Launcher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -209,6 +231,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(756, 508);
+            Controls.Add(checkBox1);
+            Controls.Add(label9);
             Controls.Add(comboBox2);
             Controls.Add(label8);
             Controls.Add(button4);
@@ -251,5 +275,7 @@
         private Button button4;
         private ComboBox comboBox2;
         private Label label8;
+        private Label label9;
+        private CheckBox checkBox1;
     }
 }
