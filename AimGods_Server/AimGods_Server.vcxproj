@@ -177,7 +177,6 @@
     <ClCompile Include="kiero\minhook\src\hook.cpp" />
     <ClCompile Include="kiero\minhook\src\trampoline.cpp" />
     <ClCompile Include="Mem.cpp" />
-    <ClCompile Include="Scripting.cpp" />
     <ClCompile Include="SDK\AimGods_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
     <ClCompile Include="SDK\BP_AGCharacter_BlueTeam_functions.cpp" />
@@ -218,7 +217,6 @@
     <ClInclude Include="kiero\minhook\src\hde\table64.h" />
     <ClInclude Include="kiero\minhook\src\trampoline.h" />
     <ClInclude Include="Mem.h" />
-    <ClInclude Include="Scripting.h" />
     <ClInclude Include="SDK.hpp" />
     <ClInclude Include="SDK\AimGods_classes.hpp" />
     <ClInclude Include="SDK\AimGods_structs.hpp" />

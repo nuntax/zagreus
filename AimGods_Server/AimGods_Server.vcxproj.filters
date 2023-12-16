@@ -73,9 +73,6 @@
     <ClCompile Include="kiero\minhook\src\trampoline.cpp">
       <Filter>Headers\Libaries</Filter>
     </ClCompile>
-    <ClCompile Include="Scripting.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="DebugMenu.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -265,9 +262,6 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="Mem.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Scripting.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="SDK.hpp">

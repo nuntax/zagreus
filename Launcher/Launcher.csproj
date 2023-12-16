@@ -7,9 +7,13 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>$(SolutionDir)x64\$(Configuration)\</BaseOutputPath>
-  </PropertyGroup>
 
+  </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
     <PackageReference Include="Reloaded.Injector" Version="1.2.5" />
@@ -45,5 +49,7 @@
   <ItemGroup>
     <NativeLibs Remove="App.config" />
   </ItemGroup>
+
+
 
 </Project>

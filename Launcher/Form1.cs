@@ -49,12 +49,8 @@ namespace Launcher
         private void LoadFromSettings()
         {
             //load the settings.json file
-            if (!File.Exists("settings.json"))
-            {
-                File.Create("settings.json");
-                return;
-            }
-
+            
+           
             try
             {
                 var settings = File.ReadAllText("settings.json");
@@ -88,9 +84,11 @@ namespace Launcher
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error while loading settings.json: " + e.Message);
-                throw;
+                MessageBox.Show("Error while loading settings.json, no settings got loaded: " + e.Message);
+                File.Delete("settings.json");
+                
             }
+           
 
         }
 
@@ -99,11 +97,17 @@ namespace Launcher
         {
             //save the settings.json file
             Settings settings = new Settings();
-            settings.serverpath = serverinstallationpath;
-            settings.clientpath = clientinstallationpath;
-            settings.ip = maskedTextBox1.Text;
-            settings.mode = comboBox1.Text;
-            settings.map = comboBox2.Text;
+
+            if(settings.serverpath != "")
+                settings.serverpath = serverinstallationpath;
+            if(settings.clientpath != "")
+                settings.clientpath = clientinstallationpath;
+            if(settings.ip != "")
+                settings.ip = maskedTextBox1.Text;
+            if(settings.mode != "")
+                settings.mode = comboBox1.Text;
+            if(settings.map != "")
+                settings.map = comboBox2.Text;
             string json = JsonConvert.SerializeObject(settings);
             File.WriteAllText("settings.json", json);
 
@@ -121,9 +125,6 @@ namespace Launcher
 
             //check if 
         }
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AllocConsole();
         private void Launcher_Load(object sender, EventArgs e)
         {
 
@@ -194,7 +195,7 @@ namespace Launcher
             }
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = serverinstallationpath + "\\AimGods-Win64-Shipping.exe";
-            startInfo.Arguments = "-NoEAC";
+            startInfo.Arguments = "-NoEAC -RenderOffscreen";
             Process aimgods = Process.Start(startInfo);
             while (true)
             {

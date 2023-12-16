@@ -65,58 +65,6 @@ DWORD WINAPI main(LPVOID lpReserved)
     {
         SetWindowTextA(hWnd, "SERVER");
 	}
-
-    while(false)
-    {
-        
-        
-        std::string ida = "",mask = "", pattern = "";
-        std::cout << "ida: ";
-        std::getline(std::cin, ida);
-        bool once_per_byte = false;
-        pattern = "\\x";
-
-        for (int i = 0; i < ida.size(); i++) {
-            if (ida[i] == ' ')
-                pattern += "\\x";
-            else if (ida[i] == '?') {
-                mask += '?';
-                pattern += "00";
-            }
-            else {
-                pattern += ida[i];
-                if (!once_per_byte)
-                    mask += 'x';
-
-                once_per_byte = !once_per_byte;
-            }
-        }
-        auto bytes = escapedHexStringToBytes(pattern);
-        auto result = Mem::Scan(GetModuleHandleW(nullptr), bytes.data(), mask.c_str());
-        std::cout << "result: " << std::hex << result << std::endl;
-        
-    }
-    
-    
-    
-    //iterate through all uobjects
-    /*for (int i = 0; i < SDK::UObject::GObjects->Num(); i++) {
-        SDK::UObject* object = SDK::UObject::GObjects->GetByIndex(i);
-        if (object == nullptr)
-            continue;
-        if (object->IsA(SDK::UClass::StaticClass())) {
-            SDK::UClass* uclass = (SDK::UClass*)object;
-            if (uclass->GetName().find("BP_PlayerController_C") != std::string::npos) {
-                LOG("Found BP_PlayerController_C");
-                
-                LOG("Done");
-            }
-        }
-        LOG(object->GetName());
-        
-    }*/
-    
-    
     return TRUE;
 }   
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
