@@ -35,6 +35,7 @@ void activateConsole()
 
 void StartMatch()
 {
+	std::cout << "Starting Match" << std::endl;
 	SDK::UWorld* GWorld = SDK::UWorld::GetWorld();
 	auto GameMode = static_cast<SDK::ABP_AGGameMode_C*>(GWorld->AuthorityGameMode);
 	auto GameStatistics = SDK::UGameplayStatics::GetDefaultObj();
@@ -43,7 +44,7 @@ void StartMatch()
 	for (int i = 1; i < AllPCs.Num(); i++)
 	{
 		auto PC = static_cast<SDK::ABP_AGPlayerController_C*>(AllPCs[i]);
-		DebugMenu::console.AddLog("Spawning for PlayerController: %s", PC->GetFullName().c_str());
+		std::cout << "Spawning for PlayerController: " << PC->GetFullName() << std::endl;
 		int j = 2;
 		if(MaxPlayers == 5)
 		{
@@ -57,7 +58,7 @@ void StartMatch()
 		{
 			PC->TeamComponent->bIsRedTeam = true;
 		}
-		DebugMenu::console.AddLog("1Player's Team: %s", PC->TeamComponent->bIsRedTeam ? "Red" : "Blue");
+		
 	}
 
 	rHandleHasMatchStarted(GameMode);
@@ -65,8 +66,7 @@ void StartMatch()
 	for (int i = 1; i < AllPCs.Num(); i++)
 	{
 		auto PC = static_cast<SDK::ABP_AGPlayerController_C*>(AllPCs[i]);
-		DebugMenu::console.AddLog("Spawning for PlayerController: %s", PC->GetFullName().c_str());
-		DebugMenu::console.AddLog("Player's Team: %s", PC->TeamComponent->bIsRedTeam ? "Red" : "Blue");
+		
 		rRespawnPlayer(GameMode, PC);
 	}
 	
@@ -125,8 +125,8 @@ void InitializeServer()
 	std::wstring servercommand = map_wstring + L"?listen?game=BP_AGGameMode.BP_AGGameMode_C";
 	MaxPlayers = j["maxplayers"].template get<int>();
 
-	DebugMenu::console.AddLog("MaxPlayers: %d", MaxPlayers);
-	DebugMenu::console.AddLog("ServerCommand: %ws", servercommand.c_str());
+	std::cout << "MaxPlayers: " << MaxPlayers << std::endl;
+	std::cout << "Map: " << map << std::endl;
 	SDK::UGameplayStatics::GetDefaultObj()->SetEnableWorldRendering(GWorld, false);
 	PC->LocalTravel(SDK::FString(servercommand.c_str()));
 	CreateThread(0, 0, PlayerCheckLoop, 0, 0, nullptr);

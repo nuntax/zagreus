@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>D:\AimGods_WorkSpace\Repos_AimGods\Shipping_Build\aimgods_port_to_ship\x64\Release\Release\net6.0-windows</OutDir>
+    <OutDir>$(SolutionDir)\x64\Release\Release\net6.0-windows</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
