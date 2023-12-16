@@ -92,11 +92,13 @@ void SetMatch()
 
 DWORD WINAPI PlayerCheckLoop(LPVOID lpreserverd)
 {
+	std::cout << "Waiting for Players" << std::endl;
 	while (true)
 	{
 		FunctionQueue::AddFunction(SetMatch);
 		if (CanStartMatch)
 		{
+			std::cout << "Players Joined, Starting Match" << std::endl;
 			FunctionQueue::AddFunction(StartMatch);
 			break;
 		}

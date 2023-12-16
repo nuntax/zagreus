@@ -195,7 +195,7 @@ namespace Launcher
             }
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = serverinstallationpath + "\\AimGods-Win64-Shipping.exe";
-            startInfo.Arguments = "-NoEAC -RenderOffscreen";
+            startInfo.Arguments = "-NoEAC -nullrhi";
             Process aimgods = Process.Start(startInfo);
             while (true)
             {
