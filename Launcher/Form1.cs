@@ -199,7 +199,6 @@ namespace Launcher
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = serverinstallationpath + "\\AimGods-Win64-Shipping.exe";
             startInfo.Arguments = "-NoEAC " + (checkBox1.Checked ? "-nullrhi" :  "");
-            MessageBox.Show(startInfo.Arguments);
             Process aimgods = Process.Start(startInfo);
             while (true)
             {

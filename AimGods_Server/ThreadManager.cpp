@@ -18,6 +18,10 @@ void ThreadManager::ThreadLoop()
 		}
 }
 typedef DWORD(WINAPI* ThreadFunction)(LPVOID lpParameter);
+/*
+ *The lpParameter is the destroyeable bool
+ *If u want to destroy the thread, cast the lpParameter to bool and set it to true
+ */
 thread_data * ThreadManager::CreateRoutine(ThreadFunction function)
 {
 	thread_data * data = new thread_data();

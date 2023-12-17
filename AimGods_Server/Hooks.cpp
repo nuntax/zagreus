@@ -23,17 +23,6 @@ tProcessEvent rProcessEvent = nullptr;
 using json = nlohmann::json;
 int MaxPlayers = 3;
 
-void activateConsole()
-{
-	auto Engine = SDK::UGameEngine::GetEngine();
-	auto stats = SDK::UGameplayStatics::GetDefaultObj();
-	auto ViewPort = Engine->GameViewport;
-	if (!ViewPort->ViewportConsole)
-	{
-		ViewPort->ViewportConsole = static_cast<SDK::UConsole*>(stats->SpawnObject(SDK::UConsole::StaticClass(), ViewPort));
-	}
-}
-
 void StartMatch()
 {
 	std::cout << "Starting Match" << std::endl;
