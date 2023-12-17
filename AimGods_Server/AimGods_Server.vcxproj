@@ -187,13 +187,9 @@
     <ClCompile Include="SDK\BP_AGGameMode_Test_functions.cpp" />
     <ClCompile Include="SDK\BP_AGGameState_functions.cpp" />
     <ClCompile Include="SDK\BP_AGPlayerController_functions.cpp" />
-    <ClCompile Include="SDK\BP_BaseGate_functions.cpp" />
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
     <ClCompile Include="SDK\MainMenu_functions.cpp" />
-    <ClCompile Include="SDK\UMG_functions.cpp" />
-    <ClCompile Include="SDK\WB_AGSaveGame_functions.cpp" />
-    <ClCompile Include="SDK\WB_CheatManager_functions.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -242,23 +238,12 @@
     <ClInclude Include="SDK\BP_AGGameState_structs.hpp" />
     <ClInclude Include="SDK\BP_AGPlayerController_classes.hpp" />
     <ClInclude Include="SDK\BP_AGPlayerController_structs.hpp" />
-    <ClInclude Include="SDK\BP_BaseGate_classes.hpp" />
-    <ClInclude Include="SDK\BP_BaseGate_parameters.hpp" />
-    <ClInclude Include="SDK\BP_BaseGate_structs.hpp" />
-    <ClInclude Include="SDK\BP_PlayerSpawn_classes.hpp" />
-    <ClInclude Include="SDK\CableComponent_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
     <ClInclude Include="SDK\Engine_structs.hpp" />
     <ClInclude Include="SDK\MainMenu_classes.hpp" />
     <ClInclude Include="SDK\MainMenu_structs.hpp" />
-    <ClInclude Include="SDK\UMG_classes.hpp" />
-    <ClInclude Include="SDK\UMG_structs.hpp" />
-    <ClInclude Include="SDK\WB_AGSaveGame_classes.hpp" />
-    <ClInclude Include="SDK\WB_AGSaveGame_structs.hpp" />
-    <ClInclude Include="SDK\WB_CheatManager_classes.hpp" />
-    <ClInclude Include="SDK\WB_CheatManager_structs.hpp" />
     <ClInclude Include="ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>

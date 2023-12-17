@@ -70,6 +70,7 @@ DWORD WINAPI ThreadManager(LPVOID lpreserverd)
 {
     g_ThreadManager.ThreadLoop();
 
+    return TRUE;
 }
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {

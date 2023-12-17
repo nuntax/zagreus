@@ -31,9 +31,6 @@
     <ClCompile Include="SDK\BP_AGPlayerController_functions.cpp">
       <Filter>Headers\SDK</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\BP_BaseGate_functions.cpp">
-      <Filter>Headers\SDK</Filter>
-    </ClCompile>
     <ClCompile Include="kiero\minhook\src\buffer.cpp">
       <Filter>Headers\Libaries</Filter>
     </ClCompile>
@@ -94,15 +91,6 @@
     <ClCompile Include="kiero\minhook\src\hook.cpp">
       <Filter>Headers\Libaries</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\UMG_functions.cpp">
-      <Filter>Headers\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\WB_AGSaveGame_functions.cpp">
-      <Filter>Headers\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\WB_CheatManager_functions.cpp">
-      <Filter>Headers\SDK</Filter>
-    </ClCompile>
     <ClCompile Include="SDK\MainMenu_functions.cpp">
       <Filter>Headers\SDK</Filter>
     </ClCompile>
@@ -111,9 +99,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SDK\BP_PlayerSpawn_classes.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\AimGods_classes.hpp">
       <Filter>Headers\SDK</Filter>
     </ClInclude>
@@ -180,20 +165,8 @@
     <ClInclude Include="SDK\BP_AGPlayerController_structs.hpp">
       <Filter>Headers\SDK</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\BP_BaseGate_classes.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\BP_BaseGate_parameters.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\BP_BaseGate_structs.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
     <ClInclude Include="kiero\minhook\src\buffer.h">
       <Filter>Headers\Libaries</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\CableComponent_classes.hpp">
-      <Filter>Headers\SDK</Filter>
     </ClInclude>
     <ClInclude Include="SDK\CoreUObject_classes.hpp">
       <Filter>Headers\SDK</Filter>
@@ -272,24 +245,6 @@
     </ClInclude>
     <ClInclude Include="SDK.hpp">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\UMG_classes.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\UMG_structs.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WB_AGSaveGame_classes.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WB_AGSaveGame_structs.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WB_CheatManager_classes.hpp">
-      <Filter>Headers\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WB_CheatManager_structs.hpp">
-      <Filter>Headers\SDK</Filter>
     </ClInclude>
     <ClInclude Include="SDK\MainMenu_classes.hpp">
       <Filter>Headers\SDK</Filter>
