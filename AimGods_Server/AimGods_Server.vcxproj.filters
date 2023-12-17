@@ -103,6 +103,9 @@
     <ClCompile Include="SDK\WB_CheatManager_functions.cpp">
       <Filter>Headers\SDK</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\MainMenu_functions.cpp">
+      <Filter>Headers\SDK</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDK\BP_PlayerSpawn_classes.hpp">
@@ -283,6 +286,12 @@
       <Filter>Headers\SDK</Filter>
     </ClInclude>
     <ClInclude Include="SDK\WB_CheatManager_structs.hpp">
+      <Filter>Headers\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\MainMenu_classes.hpp">
+      <Filter>Headers\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\MainMenu_structs.hpp">
       <Filter>Headers\SDK</Filter>
     </ClInclude>
   </ItemGroup>
