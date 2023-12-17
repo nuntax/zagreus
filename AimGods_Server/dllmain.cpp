@@ -12,10 +12,8 @@
 #include "DX11Hook.h"
 #include "FunctionQueue.h"
 #include "Hooks.h"
+#include "ThreadManager.h"
 
-#define UE_BUILD_DEVELOPMENT 1
-#define LOG(msg) \
-std::cout << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
 
 void GetAllWindowsFromProcessID(DWORD dwProcessID, std::vector <HWND>& vhWnds)
 {
@@ -55,18 +53,24 @@ DWORD WINAPI main(LPVOID lpReserved)
     freopen_s(&consoleOut, "CONOUT$", "w", stdout);
     std::cout << "AimGods Dev Build" << std::endl;
     Hooks::HookFunctions();
-    DX11Hook::Init(DebugMenu::Render);
+    //DX11Hook::Init(DebugMenu::Render);
     SDK::InitGObjects();
     //get the current process id
     const int pid = GetCurrentProcessId();
     std::vector <HWND> vhWnds;
     GetAllWindowsFromProcessID(pid, vhWnds);
+    //renaming the window to SERVER
     for(auto hWnd : vhWnds)
     {
         SetWindowTextA(hWnd, "SERVER");
 	}
     return TRUE;
-}   
+}
+DWORD WINAPI ThreadManager(LPVOID lpreserverd)
+{
+    g_ThreadManager.ThreadLoop();
+
+}
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
     DisableThreadLibraryCalls(hModule);
@@ -74,6 +78,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
     {
     case DLL_PROCESS_ATTACH:
         CreateThread(0,0, main, hModule, 0, nullptr);
+        CreateThread(0, 0, ThreadManager, 0 , 0, nullptr);
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:

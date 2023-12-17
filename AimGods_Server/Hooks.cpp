@@ -9,6 +9,7 @@
 #include "Mem.h"
 #include "DebugMenu.h"
 #include "FunctionQueue.h"
+#include "ThreadManager.h"
 //SERVER
 //SERVER
 //SERVER
@@ -21,17 +22,6 @@ typedef void(*tProcessEvent) (SDK::UObject*, SDK::UFunction*, void*);
 tProcessEvent rProcessEvent = nullptr;
 using json = nlohmann::json;
 int MaxPlayers = 3;
-
-void activateConsole()
-{
-	auto Engine = SDK::UGameEngine::GetEngine();
-	auto stats = SDK::UGameplayStatics::GetDefaultObj();
-	auto ViewPort = Engine->GameViewport;
-	if (!ViewPort->ViewportConsole)
-	{
-		ViewPort->ViewportConsole = static_cast<SDK::UConsole*>(stats->SpawnObject(SDK::UConsole::StaticClass(), ViewPort));
-	}
-}
 
 void StartMatch()
 {
@@ -90,9 +80,10 @@ void SetMatch()
 	}
 }
 
-DWORD WINAPI PlayerCheckLoop(LPVOID lpreserverd)
+DWORD WINAPI PlayerCheckLoop(LPVOID lpParameter)
 {
 	std::cout << "Waiting for Players" << std::endl;
+	bool* destroy = static_cast<bool*>(lpParameter);
 	while (true)
 	{
 		FunctionQueue::AddFunction(SetMatch);
@@ -104,12 +95,13 @@ DWORD WINAPI PlayerCheckLoop(LPVOID lpreserverd)
 		}
 		Sleep(1000);
 	}
+	*destroy = true;
 	return 0;
 }
 
 void InitializeServer()
 {
-	activateConsole();
+	
 	LPSTR workingdir = new CHAR[MAX_PATH];
 	GetCurrentDirectoryA(MAX_PATH, workingdir);
 	std::string path = workingdir;
@@ -131,7 +123,7 @@ void InitializeServer()
 	std::cout << "Map: " << map << std::endl;
 	SDK::UGameplayStatics::GetDefaultObj()->SetEnableWorldRendering(GWorld, false);
 	PC->LocalTravel(SDK::FString(servercommand.c_str()));
-	CreateThread(0, 0, PlayerCheckLoop, 0, 0, nullptr);
+	g_ThreadManager.CreateRoutine(PlayerCheckLoop);
 }
 
 static const std::unordered_set<std::string> functionsToSkip = {
