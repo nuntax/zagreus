@@ -13,6 +13,14 @@ Client DLL that will connect to the given IP-Address that got defined in `matchc
 Server DLL that opens a Server with the options that got defined in `matchconfig_server.ag` by the Launcher as soon as the Login Map got loaded (Engine is fully initialized at that point).
 ### Launcher
 Winforms project that provides functionality to both host a server and connect with a client.
+## Branches
+We have multiple branches for new features that are getting implemented.
+### Main
+Stable branch. If u just want to build the latest stable version go with that branch.
+### Threading
+Multiple improvements to the way the server is utilizing threads.
 ## Building
 Clone the project `https://github.com/nuntax/zagreus.git`
-Open the Solution and Build :)
+Dependency management is currently being done with vcpkg.
+Detours and nlhomanm/json arent in the project but instead managed through vcpkg.
+You can find a tutorial on how to use vcpkg [here](https://vcpkg.io/en/getting-started)
