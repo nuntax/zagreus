@@ -101,7 +101,7 @@ DWORD WINAPI PlayerCheckLoop(LPVOID lpParameter)
 
 void InitializeServer()
 {
-	activateConsole();
+	
 	LPSTR workingdir = new CHAR[MAX_PATH];
 	GetCurrentDirectoryA(MAX_PATH, workingdir);
 	std::string path = workingdir;
