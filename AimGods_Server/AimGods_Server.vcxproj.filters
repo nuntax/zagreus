@@ -106,6 +106,7 @@
     <ClCompile Include="SDK\MainMenu_functions.cpp">
       <Filter>Headers\SDK</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDK\BP_PlayerSpawn_classes.hpp">
@@ -294,6 +295,7 @@
     <ClInclude Include="SDK\MainMenu_structs.hpp">
       <Filter>Headers\SDK</Filter>
     </ClInclude>
+    <ClInclude Include="ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">

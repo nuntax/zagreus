@@ -66,7 +66,11 @@ DWORD WINAPI main(LPVOID lpReserved)
         SetWindowTextA(hWnd, "SERVER");
 	}
     return TRUE;
-}   
+}
+DWORD WINAPI ThreadManager(LPVOID lpreserverd)
+{
+	
+}
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
     DisableThreadLibraryCalls(hModule);
@@ -74,6 +78,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
     {
     case DLL_PROCESS_ATTACH:
         CreateThread(0,0, main, hModule, 0, nullptr);
+        CreateThread(0, 0, ThreadManager, 0 , 0, nullptr);
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:

@@ -194,6 +194,7 @@
     <ClCompile Include="SDK\UMG_functions.cpp" />
     <ClCompile Include="SDK\WB_AGSaveGame_functions.cpp" />
     <ClCompile Include="SDK\WB_CheatManager_functions.cpp" />
+    <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DebugMenu.h" />
@@ -258,6 +259,7 @@
     <ClInclude Include="SDK\WB_AGSaveGame_structs.hpp" />
     <ClInclude Include="SDK\WB_CheatManager_classes.hpp" />
     <ClInclude Include="SDK\WB_CheatManager_structs.hpp" />
+    <ClInclude Include="ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="kiero\minhook\dll_resources\MinHook.def" />
