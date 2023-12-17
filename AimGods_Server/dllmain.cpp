@@ -12,6 +12,7 @@
 #include "DX11Hook.h"
 #include "FunctionQueue.h"
 #include "Hooks.h"
+#include "ThreadManager.h"
 
 #define UE_BUILD_DEVELOPMENT 1
 #define LOG(msg) \
@@ -69,7 +70,8 @@ DWORD WINAPI main(LPVOID lpReserved)
 }
 DWORD WINAPI ThreadManager(LPVOID lpreserverd)
 {
-	
+    g_ThreadManager.ThreadLoop();
+
 }
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
