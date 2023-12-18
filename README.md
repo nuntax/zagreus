@@ -12,7 +12,7 @@ Client DLL that will connect to the given IP-Address that got defined in `matchc
 ### AimGods_Server
 Server DLL that opens a Server with the options that got defined in `matchconfig_server.ag` by the Launcher as soon as the Login Map got loaded (Engine is fully initialized at that point).
 ### Launcher
-Winforms project that provides functionality to both host a server and connect with a client.
+Winforms project that provides functionality to both host a server and connect to a server.
 ## Branches
 We have multiple branches for new features that are getting implemented.
 ### Main
