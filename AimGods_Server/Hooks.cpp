@@ -116,7 +116,7 @@ void InitializeServer()
 	std::string map = j["map"];
 	std::cout << "Map: " << map << std::endl;
 	std::wstring map_wstring = std::wstring(map.begin(), map.end());
-	std::wstring servercommand = map_wstring + L"?listen?game=BP_AGGameMode.BP_AGGameMode_C";
+	std::wstring servercommand = map_wstring + L"?listen?game=AimGods.BP_AGGameMode_C";
 	MaxPlayers = j["maxplayers"].template get<int>();
 
 	std::cout << "MaxPlayers: " << MaxPlayers << std::endl;
@@ -151,7 +151,13 @@ void hProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Params)
 	}
 
 	if (GetAsyncKeyState(VK_CAPITAL) & (1 << 16) && ShouldLog(Function->GetFullName()) || (Hooks::LogProcessEvent && ShouldLog(Function->GetFullName())))
-		DebugMenu::console.AddLog("ProcessEvent: %s", Function->GetFullName().c_str());
+	{
+		std::cout << "Object: " << Object->GetFullName() << std::endl;
+		std::cout << "Function: " << Function->GetFullName() << std::endl;
+	}
+		
+
+		
 
 	return rProcessEvent(Object, Function, Params);
 }
