@@ -125,7 +125,24 @@ namespace Launcher
             this.maskedTextBox1.ValidatingType = typeof(System.Net.IPAddress);
             this.maskedTextBox1.Text = matchConfig.serverip;
             LoadFromSettings();
+            string responseString = "";
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync("https://raw.githubusercontent.com/nuntax/zagreus-config/main/data.json").Result;
 
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+
+                    // by calling .Result you are synchronously reading the result
+                    responseString = responseContent.ReadAsStringAsync().Result;
+                }
+            }
+
+            richTextBox1.Text =
+                Newtonsoft.Json.Linq.JObject.Parse(responseString)["text"].ToString();
+            richTextBox1.ReadOnly = true;
+ 
             //check if 
         }
         private void Launcher_Load(object sender, EventArgs e)
@@ -198,7 +215,7 @@ namespace Launcher
             }
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = serverinstallationpath + "\\AimGods-Win64-Shipping.exe";
-            startInfo.Arguments = "-NoEAC " + (checkBox1.Checked ? "-nullrhi" :  "");
+            startInfo.Arguments = "-NoEAC " + (checkBox1.Checked ? "-nullrhi" : "");
             Process aimgods = Process.Start(startInfo);
             while (true)
             {
@@ -302,5 +319,7 @@ namespace Launcher
         {
             SaveToSettings();
         }
+
+        
     }
 }

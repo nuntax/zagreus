@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launcher));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -45,6 +46,7 @@
             label8 = new Label();
             label9 = new Label();
             checkBox1 = new CheckBox();
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
             // label1
@@ -125,7 +127,11 @@
             // 
             // comboBox1
             // 
+            comboBox1.BackColor = Color.FromArgb(36, 36, 36);
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Enabled = false;
+            comboBox1.FlatStyle = FlatStyle.System;
+            comboBox1.ForeColor = SystemColors.InfoText;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "1vs1", "2vs2" });
             comboBox1.Location = new Point(609, 109);
@@ -136,26 +142,34 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(36, 36, 36);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(288, 74);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 8;
             button1.Text = "Select";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(36, 36, 36);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = SystemColors.ButtonHighlight;
             button2.Location = new Point(655, 71);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 9;
             button2.Text = "Select";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // maskedTextBox1
             // 
+            maskedTextBox1.BackColor = Color.FromArgb(36, 36, 36);
+            maskedTextBox1.ForeColor = SystemColors.Window;
             maskedTextBox1.Location = new Point(263, 113);
             maskedTextBox1.Name = "maskedTextBox1";
             maskedTextBox1.Size = new Size(100, 23);
@@ -164,27 +178,36 @@
             // 
             // button3
             // 
+            button3.BackColor = Color.FromArgb(36, 36, 36);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = SystemColors.ButtonHighlight;
             button3.Location = new Point(12, 457);
             button3.Name = "button3";
             button3.Size = new Size(351, 23);
             button3.TabIndex = 11;
             button3.Text = "Connect";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
             // 
+            button4.BackColor = Color.FromArgb(36, 36, 36);
+            button4.Enabled = false;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = SystemColors.ButtonHighlight;
             button4.Location = new Point(408, 457);
             button4.Name = "button4";
             button4.Size = new Size(322, 23);
             button4.TabIndex = 12;
             button4.Text = "Host";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // comboBox2
             // 
+            comboBox2.BackColor = Color.FromArgb(36, 36, 36);
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Enabled = false;
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "egypt_p", "colosseum_p" });
             comboBox2.Location = new Point(609, 149);
@@ -218,11 +241,22 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
+            checkBox1.Enabled = false;
             checkBox1.Location = new Point(715, 197);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(15, 14);
             checkBox1.TabIndex = 16;
             checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = Color.FromArgb(36, 36, 36);
+            richTextBox1.ForeColor = SystemColors.Window;
+            richTextBox1.Location = new Point(12, 153);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(351, 97);
+            richTextBox1.TabIndex = 17;
+            richTextBox1.Text = "";
             // 
             // Launcher
             // 
@@ -231,6 +265,7 @@
             BackColor = Color.FromArgb(32, 32, 32);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(756, 508);
+            Controls.Add(richTextBox1);
             Controls.Add(checkBox1);
             Controls.Add(label9);
             Controls.Add(comboBox2);
@@ -249,9 +284,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Launcher";
             RightToLeftLayout = true;
-            Text = "Form1";
+            Text = "Zagreus";
             FormClosing += Launcher_FormClosing;
             Load += Launcher_Load;
             ResumeLayout(false);
@@ -277,5 +313,6 @@
         private Label label8;
         private Label label9;
         private CheckBox checkBox1;
+        private RichTextBox richTextBox1;
     }
 }

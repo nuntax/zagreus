@@ -1,7 +1,8 @@
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Newtonsoft.Json.Linq;
+using System.Windows.Forms.VisualStyles;
+using Newtonsoft.Json;
 using UnrealEngine.Gvas;
 using UnrealEngine.Gvas.FProperties;
 namespace AbilityPickerV2
@@ -32,7 +33,7 @@ namespace AbilityPickerV2
             string lastPart = original.Substring(lastSlashIndex + 1);
             return original + "." + lastPart + "_C";
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             AllocConsole();
@@ -41,21 +42,20 @@ namespace AbilityPickerV2
             string responseString = "";
             using (var client = new HttpClient())
             {
-                var response = client.GetAsync("http://google.com").Result;
+                var response = client.GetAsync("https://raw.githubusercontent.com/nuntax/zagreus-config/main/data.json").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = response.Content; 
+                    var responseContent = response.Content;
 
                     // by calling .Result you are synchronously reading the result
                     responseString = responseContent.ReadAsStringAsync().Result;
-
-                    
                 }
             }
-           
+
             richTextBox1.Text =
-                responseString;
+                Newtonsoft.Json.Linq.JObject.Parse(responseString)["text"].ToString();
+
             //init ability list
             {
                 for (int i = 0; i < abilityNames.Length; i++)
@@ -124,34 +124,56 @@ namespace AbilityPickerV2
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[0] = AbilityList[comboBox1.SelectedIndex].Path;
+            LoadoutPaths[4] = AbilityList[comboBox1.SelectedIndex].Path;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[1] = AbilityList[comboBox2.SelectedIndex].Path;
+            LoadoutPaths[6] = AbilityList[comboBox2.SelectedIndex].Path;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[2] = AbilityList[comboBox3.SelectedIndex].Path;
+            LoadoutPaths[5] = AbilityList[comboBox3.SelectedIndex].Path;
         }
 
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[3] = AbilityList[comboBox6.SelectedIndex].Path;
+            LoadoutPaths[1] = AbilityList[comboBox6.SelectedIndex].Path;
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[4] = AbilityList[comboBox5.SelectedIndex].Path;
+            LoadoutPaths[2] = AbilityList[comboBox5.SelectedIndex].Path;
         }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[5] = AbilityList[comboBox4.SelectedIndex].Path;
+            LoadoutPaths[0] = AbilityList[comboBox4.SelectedIndex].Path;
         }
 
+        private string getNumberName(int n)
+        {
+            switch (n)
+            {
+                case 0:
+                    return "One";
+                case 1:
+                    return "Two";
+                case 2:
+                    return "Three";
+                case 3:
+                    return "Four";
+                case 4:
+                    return "Five";
+                case 5:
+                    return "Six";
+                case 6:
+                    return "Seven";
+                default:
+                    throw new Exception("Invalid number");
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -162,9 +184,11 @@ namespace AbilityPickerV2
             {
                 var fsp = slot as FStructProperty;
                 fsp?.Fields["AbilityClass"]?.SetValue(LoadoutPaths[i]);
+                //Console.WriteLine(fsp?.Fields["EnumProperty"]);
+
                 i++;
             }
-            
+
             data.Save(SaveFilePath);
         }
 
@@ -175,7 +199,7 @@ namespace AbilityPickerV2
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadoutPaths[6] = AbilityList[comboBox7.SelectedIndex].Path;
+            LoadoutPaths[3] = AbilityList[comboBox7.SelectedIndex].Path;
         }
     }
 }
