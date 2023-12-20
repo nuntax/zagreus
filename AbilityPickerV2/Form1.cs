@@ -32,13 +32,30 @@ namespace AbilityPickerV2
             string lastPart = original.Substring(lastSlashIndex + 1);
             return original + "." + lastPart + "_C";
         }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             AllocConsole();
             string[] abilityNames = File.ReadAllLines("abilitynames.txt");
             string[] abilityPaths = File.ReadAllLines("abilitypaths.txt");
+            string responseString = "";
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync("http://google.com").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content; 
+
+                    // by calling .Result you are synchronously reading the result
+                    responseString = responseContent.ReadAsStringAsync().Result;
+
+                    
+                }
+            }
+           
             richTextBox1.Text =
-                "Dont use the Bleeding 2 and Bleeding 3 abilities, they are bugged and will crash the server.";
+                responseString;
             //init ability list
             {
                 for (int i = 0; i < abilityNames.Length; i++)
