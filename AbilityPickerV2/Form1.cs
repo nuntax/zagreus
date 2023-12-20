@@ -21,7 +21,17 @@ namespace AbilityPickerV2
             InitializeComponent();
 
         }
+        static string ConvertString(string original)
+        {
+            int lastSlashIndex = original.LastIndexOf('/');
+            if (lastSlashIndex == -1)
+            {
+                return original;
+            }
 
+            string lastPart = original.Substring(lastSlashIndex + 1);
+            return original + "." + lastPart + "_C";
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             AllocConsole();
@@ -33,7 +43,7 @@ namespace AbilityPickerV2
             {
                 for (int i = 0; i < abilityNames.Length; i++)
                 {
-                    AbilityList.Add(new AbilityClass() { Name = abilityNames[i], Path = abilityPaths[i] });
+                    AbilityList.Add(new AbilityClass() { Name = abilityNames[i], Path = ConvertString(abilityPaths[i]) });
                 }
                 foreach (AbilityClass ability in AbilityList)
                 {
@@ -133,15 +143,11 @@ namespace AbilityPickerV2
             int i = 0;
             foreach (var slot in loadout.Elements)
             {
-                var fsp = (slot as FStructProperty)!;
-                var slotNumber = (fsp.Fields["AbilitySlot"] as FEnumProperty)?.Value;
-                var slotAbility = (fsp.Fields["AbilityClass"] as FObjectProperty)?.ObjectName;
-                slotAbility = LoadoutPaths[i];
-
-
-                Console.WriteLine($"{slotNumber} has {slotAbility}");
+                var fsp = slot as FStructProperty;
+                fsp?.Fields["AbilityClass"]?.SetValue(LoadoutPaths[i]);
+                i++;
             }
-
+            
             data.Save(SaveFilePath);
         }
 

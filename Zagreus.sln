@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerCLI", "ServerCLI\Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbilityPickerV2", "AbilityPickerV2\AbilityPickerV2.csproj", "{031F0387-CCE4-426A-9915-79502F894776}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimGods_WebServer", "AimGods_WebServer\AimGods_WebServer.csproj", "{E6AE8936-CE91-4532-9379-7BE4C2643960}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{031F0387-CCE4-426A-9915-79502F894776}.Release|Win32.Build.0 = Release|Any CPU
 		{031F0387-CCE4-426A-9915-79502F894776}.Release|x64.ActiveCfg = Release|Any CPU
 		{031F0387-CCE4-426A-9915-79502F894776}.Release|x64.Build.0 = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|Win32.Build.0 = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Debug|x64.Build.0 = Debug|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|Win32.ActiveCfg = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|Win32.Build.0 = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|x64.ActiveCfg = Release|Any CPU
+		{E6AE8936-CE91-4532-9379-7BE4C2643960}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
