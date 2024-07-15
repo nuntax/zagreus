@@ -1,0 +1,3 @@
+[submodule "AbilityPickerV2/UnrealEngine.Gvas"]
+	path = AbilityPickerV2/UnrealEngine.Gvas
+	url = https://github.com/SparkyTD/UnrealEngine.Gvas
