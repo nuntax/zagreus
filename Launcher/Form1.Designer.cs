@@ -129,7 +129,6 @@
             // 
             comboBox1.BackColor = Color.FromArgb(36, 36, 36);
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Enabled = false;
             comboBox1.FlatStyle = FlatStyle.System;
             comboBox1.ForeColor = SystemColors.InfoText;
             comboBox1.FormattingEnabled = true;
@@ -192,7 +191,6 @@
             // button4
             // 
             button4.BackColor = Color.FromArgb(36, 36, 36);
-            button4.Enabled = false;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = SystemColors.ButtonHighlight;
             button4.Location = new Point(408, 457);
@@ -207,7 +205,6 @@
             // 
             comboBox2.BackColor = Color.FromArgb(36, 36, 36);
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.Enabled = false;
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "egypt_p", "colosseum_p" });
             comboBox2.Location = new Point(609, 149);
@@ -241,7 +238,6 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Enabled = false;
             checkBox1.Location = new Point(715, 197);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(15, 14);
