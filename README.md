@@ -22,7 +22,7 @@ Stable branch. If u just want to build the latest stable version go with that br
 ### Threading
 Multiple improvements to the way the server is utilizing threads.
 ## Building
-Clone the project `https://github.com/nuntax/zagreus.git` with its submodules.\n
+Clone the project `https://github.com/nuntax/zagreus.git` with its submodules.<br/>
 Dependency management is currently being done with vcpkg.
 Detours and nlhomanm/json arent in the project but instead managed through vcpkg.
 You can find a tutorial on how to use vcpkg [here](https://vcpkg.io/en/getting-started).<br/>
