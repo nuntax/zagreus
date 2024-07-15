@@ -24,6 +24,6 @@ Multiple improvements to the way the server is utilizing threads.
 ## Building
 Clone the project `https://github.com/nuntax/zagreus.git` with its submodules.<br/>
 Dependency management is currently being done with vcpkg.
-Detours and nlhomanm/json arent in the project but instead managed through vcpkg.
+Detours and nlhomann/json arent in the project but instead managed through vcpkg.
 You can find a tutorial on how to use vcpkg [here](https://vcpkg.io/en/getting-started).<br/>
-For the abilitypicker you have to clone the [UnrealEngine.Gvas](https://github.com/SparkyTD/UnrealEngine.Gvas) repo into the abilitypicker project folder and rename the Main function in UnrealEngine.Gvas/SavToXml/Program.cs to something else or delete it completely.
+Also u cant build the AimGods_Client project in Debug Build mode for god knows what reason.
