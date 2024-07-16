@@ -26,4 +26,5 @@ Clone the project `https://github.com/nuntax/zagreus.git` with its submodules.<b
 Dependency management is currently being done with vcpkg.
 Detours and nlhomann/json arent in the project but instead managed through vcpkg.
 You can find a tutorial on how to use vcpkg [here](https://vcpkg.io/en/getting-started).<br/>
-Also u cant build the AimGods_Client project in Debug Build mode for god knows what reason, just build the entire solution in release mode and youll be fine
+Also u cant build the AimGods_Client project in Debug Build mode for god knows what reason, just build the entire solution in release mode and youll be fine <br/>
+Before building you gotta rename the main function in Zagreus/AbilityPickerV2/UnrealEngine.Gvas/SavToXml/Program.cs to something else (e.g. __main)
