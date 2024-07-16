@@ -3,6 +3,7 @@ AimGods_Server/imgui/*
 AimGods_Server/kiero/*
 AimGods_Server/kiero/minhook/src/*
 AimGods_Server/kiero/minhook/src/hde/*
+AimGods_Server/kiero/minhook/include/*
 AimGods_Server/SDK.hpp
 AimGods_Server/PropertyFixup.hpp
 AimGods_Client/SDK/*

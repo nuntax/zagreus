@@ -7,10 +7,10 @@
 
 class FunctionQueue {
 public:
-    static void AddFunction(std::function<void()> function);
-    static void ProcessFunctions();
+  static void AddFunction(std::function<void()> function);
+  static void ProcessFunctions();
 
 private:
-    static std::queue<std::function<void()>> functionQueue;
-    static std::mutex queueMutex;
+  static std::queue<std::function<void()>> functionQueue;
+  static std::mutex queueMutex;
 };

@@ -1,5 +1,4 @@
-﻿struct Globals
-{
-    bool renderDebugMenu = false;
+﻿struct Globals {
+  bool renderDebugMenu = false;
 };
 inline Globals globals;
