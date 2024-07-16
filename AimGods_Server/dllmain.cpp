@@ -53,7 +53,7 @@ DWORD WINAPI main(LPVOID lpReserved)
     freopen_s(&consoleOut, "CONOUT$", "w", stdout);
     std::cout << "AimGods Dev Build" << std::endl;
     Hooks::HookFunctions();
-    //DX11Hook::Init(DebugMenu::Render);
+    DX11Hook::Init(DebugMenu::Render);
     SDK::InitGObjects();
     //get the current process id
     const int pid = GetCurrentProcessId();

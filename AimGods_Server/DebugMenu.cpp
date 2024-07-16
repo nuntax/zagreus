@@ -1,6 +1,7 @@
 ﻿#include "DebugMenu.h"
 
 #include "FunctionQueue.h"
+#include "Globals.h"
 #include "Hooks.h"
 #include "SDK.hpp"
 
@@ -26,7 +27,9 @@ namespace DebugMenu
         
         
         console.Draw("Debug Console", nullptr);
-        ImGui::Begin("AimGods in 2023");
+        if(globals.renderDebugMenu)
+        {
+            ImGui::Begin("AimGods in 2023");
         if(ImGui::Button("JoinServer"))
         {
             FunctionQueue::AddFunction(JoinServer);
@@ -78,5 +81,6 @@ namespace DebugMenu
             auto PC = GWorld->OwningGameInstance;
         }
         ImGui::End();
+        }
     }
 }

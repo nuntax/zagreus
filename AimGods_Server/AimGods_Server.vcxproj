@@ -196,6 +196,7 @@
     <ClInclude Include="DebugMenu.h" />
     <ClInclude Include="DX11Hook.h" />
     <ClInclude Include="FunctionQueue.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />

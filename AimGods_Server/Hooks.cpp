@@ -10,6 +10,7 @@
 #include "DebugMenu.h"
 #include "FunctionQueue.h"
 #include "ThreadManager.h"
+#include "Globals.h"
 //SERVER
 //SERVER
 //SERVER
@@ -155,7 +156,10 @@ void hProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Params)
 		std::cout << "Object: " << Object->GetFullName() << std::endl;
 		std::cout << "Function: " << Function->GetFullName() << std::endl;
 	}
-		
+	if(GetAsyncKeyState(VK_F9) & (1 << 16))
+	{
+		globals.renderDebugMenu = !globals.renderDebugMenu;
+	}
 
 		
 
