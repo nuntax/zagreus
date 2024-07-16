@@ -1,16 +1,15 @@
 ﻿#pragma once
 #include "SDK.hpp"
-namespace Hooks
-{
+namespace Hooks {
 
-    void HookFunctions();
-    inline bool LogProcessEvent = false;
+void HookFunctions();
+inline bool LogProcessEvent = false;
 }
-typedef void (__fastcall *tBeginPlay)(SDK::AAGGameMode* );
+typedef void(__fastcall* tBeginPlay)(SDK::AAGGameMode*);
 inline tBeginPlay rBeginPlay = nullptr;
-typedef void (__fastcall *tNotifyBeginplay)(SDK::AWorldSettings* );
+typedef void(__fastcall* tNotifyBeginplay)(SDK::AWorldSettings*);
 inline tNotifyBeginplay rNotifyBeginplay = nullptr;
-typedef void (__fastcall *tHandleHasMatchStarted)(SDK::AAGGameMode* );
+typedef void(__fastcall* tHandleHasMatchStarted)(SDK::AAGGameMode*);
 inline tHandleHasMatchStarted rHandleHasMatchStarted = nullptr;
-typedef void (__fastcall *tRespawnPlayer)(void*, void*);
+typedef void(__fastcall* tRespawnPlayer)(void*, void*);
 inline tRespawnPlayer rRespawnPlayer = nullptr;

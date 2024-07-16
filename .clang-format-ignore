@@ -1,0 +1,9 @@
+/AimGods_Server/SDK/*
+/AimGods_Server/imgui/*
+/AimGods_Server/kiero/*
+/AimGods_Server/SDK.hpp
+/AimGods_Server/PropertyFixup.hpp
+/AimGods_Client/SDK/*
+/AimGods_Client/SDK.hpp
+/AimGods_Client/PropertyFixup.hpp
+/AbilityPickerV2/UnrealEngine.Gvas/*

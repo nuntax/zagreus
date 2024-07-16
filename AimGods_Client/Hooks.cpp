@@ -2,34 +2,32 @@
 #include <iterator>
 #include <vector>
 
-#include "Mem.h"
 #include "FunctionQueue.h"
 #include "Hooks.h"
+#include "Mem.h"
 
-#include <nlohmann/json.hpp>
 #include <detours/detours.h>
-//CLIENT
-//CLIENT
-//CLIENT
-//CLIENT
-//CLIENT
-//CLIENT
-typedef void(*tProcessEvent) (SDK::UObject*, SDK::UFunction*, void*);
+#include <nlohmann/json.hpp>
+// CLIENT
+// CLIENT
+// CLIENT
+// CLIENT
+// CLIENT
+// CLIENT
+typedef void (*tProcessEvent)(SDK::UObject*, SDK::UFunction*, void*);
 tProcessEvent rProcessEvent = nullptr;
 using json = nlohmann::json;
 
-
 void JoinServer(const char* ip)
 {
-    
+
     SDK::UWorld* GWorld = SDK::UWorld::GetWorld();
     auto PC = GWorld->OwningGameInstance->LocalPlayers[0]->PlayerController;
-    //convert ip to wstring
+    // convert ip to wstring
     std::wstring ip_wstring = std::wstring(ip, ip + strlen(ip));
     SDK::FString ip_fstring = ip_wstring.c_str();
-    PC->ClientTravel(ip_fstring, SDK::ETravelType::TRAVEL_Absolute,false, SDK::FGuid());
+    PC->ClientTravel(ip_fstring, SDK::ETravelType::TRAVEL_Absolute, false, SDK::FGuid());
 }
-
 
 void InitClientAndConnect()
 {
@@ -53,23 +51,20 @@ void InitClientAndConnect()
     JoinServer(ip.c_str());
 }
 
-
 bool bIsFirstTime = true;
 void hProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Params)
 {
     FunctionQueue::ProcessFunctions();
-    if(strstr(Function->GetFullName().c_str(), "Function Engine.GameMode.ReadyToEndMatch") && bIsFirstTime)
-    {
+    if (strstr(Function->GetFullName().c_str(), "Function Engine.GameMode.ReadyToEndMatch") && bIsFirstTime) {
         InitClientAndConnect();
         bIsFirstTime = false;
     }
     return rProcessEvent(Object, Function, Params);
 }
 
-
 void Hooks::HookFunctions()
 {
-    
+
     rProcessEvent = (tProcessEvent)Mem::Scan(GetModuleHandleW(nullptr), reinterpret_cast<const unsigned char*>("\x40\x55\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x81\xEC\xF0\x00\x00\x00\x00"), "xxxxxxxxxxxxxxxx????");
     std::cout << "rProcessEvent: " << rProcessEvent << std::endl;
 
