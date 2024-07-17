@@ -12,7 +12,7 @@ else()
     message(FATAL_ERROR "Please set VCPKG_ROOT environment variable to vcpkg root directory")
 endif()
 
-find_package(polyhook_2 REQUIRED)
+
 
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -24,6 +24,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../AimGods_Common/include)
 # Source files specific to Client
 file(GLOB SOURCES "src/*.cpp")
 
+#packages
+find_package(polyhook_2 CONFIG REQUIRED)
+
+#link libraries
 target_link_libraries(AimGods_Client_Core PRIVATE polyhook_2::polyhook_2)
 
 # Create the DLL
