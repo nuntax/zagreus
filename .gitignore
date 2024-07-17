@@ -1,0 +1,14 @@
+build/
+bin/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+.vscode/
+.idea/
+
+
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+

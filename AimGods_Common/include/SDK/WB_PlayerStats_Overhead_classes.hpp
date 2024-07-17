@@ -1,0 +1,47 @@
+#pragma once
+
+// Dumped with Dumper-7!
+
+
+namespace SDK
+{
+//---------------------------------------------------------------------------------------------------------------------
+// CLASSES
+//---------------------------------------------------------------------------------------------------------------------
+
+// 0xA2 (0x2D2 - 0x230)
+// WidgetBlueprintGeneratedClass WB_PlayerStats_Overhead.WB_PlayerStats_Overhead_C
+class UWB_PlayerStats_Overhead_C : public UUserWidget
+{
+public:
+	struct FPointerToUberGraphFrame              UberGraphFrame;                                    // 0x230(0x8)(ZeroConstructor, Transient, DuplicateTransient)
+	class UHorizontalBox*                        BuffsBox;                                          // 0x238(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UHorizontalBox*                        DebuffsBox;                                        // 0x240(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UProgressBar*                          HealthBar;                                         // 0x248(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UTextBlock*                            HealthText;                                        // 0x250(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UGridPanel*                            MasterPannel;                                      // 0x258(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UGridPanel*                            PlayerInformationBox;                              // 0x260(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UScaleBox*                             SingularScale;                                     // 0x268(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UTextBlock*                            UsernameText;                                      // 0x270(0x8)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class ABP_AGPlayerState_C*                   Player;                                            // 0x278(0x8)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash)
+	TMap<struct FActiveGameplayEffectHandle, class UWB_GasEffectIcon_C*> EffectIcons;                                       // 0x280(0x50)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, ContainsInstancedReference)
+	bool                                         YourTeam;                                          // 0x2D0(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, ExposeOnSpawn)
+	bool                                         MyCharacter_;                                      // 0x2D1(0x1)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, ExposeOnSpawn)
+
+	static class UClass* StaticClass();
+	static class UWB_PlayerStats_Overhead_C* GetDefaultObj();
+
+	void Set_Health_Percent(class UAbilitySystemComponent* CallFunc_GetAbilitySystemComponent_ReturnValue, bool CallFunc_GetFloatAttributeFromAbilitySystemComponent_bSuccessfullyFoundAttribute, float CallFunc_GetFloatAttributeFromAbilitySystemComponent_ReturnValue, bool CallFunc_GetFloatAttributeFromAbilitySystemComponent_bSuccessfullyFoundAttribute_1, float CallFunc_GetFloatAttributeFromAbilitySystemComponent_ReturnValue_1, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData, float CallFunc_FMax_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue, class FText CallFunc_Conv_FloatToText_ReturnValue, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData_1, bool CallFunc_BooleanAND_ReturnValue, TArray<struct FFormatArgumentData>& K2Node_MakeArray_Array, class FText CallFunc_Format_ReturnValue);
+	void SelectSide(bool Temp_bool_Variable, enum class EHorizontalAlignment Temp_byte_Variable, enum class EHorizontalAlignment Temp_byte_Variable_1, enum class EHorizontalAlignment Temp_byte_Variable_2, class UOverlaySlot* CallFunc_SlotAsOverlaySlot_ReturnValue, enum class EHorizontalAlignment Temp_byte_Variable_3, class USizeBoxSlot* CallFunc_SlotAsSizeBoxSlot_ReturnValue, bool Temp_bool_Variable_1, class USizeBoxSlot* CallFunc_SlotAsSizeBoxSlot_ReturnValue_1, int32 CallFunc_SelectInt_ReturnValue, enum class EHorizontalAlignment K2Node_Select_Default, enum class EHorizontalAlignment K2Node_Select_Default_1, int32 CallFunc_SelectInt_ReturnValue_1);
+	void OnAttributeChanged_C67460624B6DD8FA943FB8818A5F571B(const struct FGameplayAttribute& Attribute, float NewValue, float OldValue);
+	void PreConstruct(bool IsDesignTime);
+	void On_Gameplay_Effect_Added(class UAbilitySystemComponent* AbilitySystemComponent, class UGameplayEffect* AddedEffect, const struct FGameplayEffectSpec& EffectSpec, const struct FActiveGameplayEffectHandle& ActiveEffectHandle);
+	void On_Gameplay_Effect_Removed(class UAbilitySystemComponent* AbilitySystemComponent, class UGameplayEffect* AddedEffect, const struct FGameplayEffectSpec& EffectSpec, const struct FActiveGameplayEffectHandle& ActiveEffectHandle);
+	void Handle_Attribute_Change(const struct FGameplayAttribute& Attribute, float OldValue, float NewValue);
+	void Set_Player(class ABP_AGPlayerState_C* Player);
+	void ExecuteUbergraph_WB_PlayerStats_Overhead(int32 EntryPoint, const struct FGameplayAttribute& K2Node_CustomEvent_Attribute_1, float K2Node_CustomEvent_NewValue_1, float K2Node_CustomEvent_OldValue_1, UDelegateProperty_ K2Node_CreateDelegate_OutputDelegate, float Temp_float_Variable, float Temp_float_Variable_1, const struct FGameplayAttribute& Temp_struct_Variable, bool K2Node_Event_IsDesignTime, bool CallFunc_IsValid_ReturnValue, const class FString& CallFunc_GetPlayerName_ReturnValue, class FText CallFunc_Conv_StringToText_ReturnValue, const class FString& CallFunc_GetUniqueIdAsString_ReturnValue, bool CallFunc_IsRedTeam_ReturnValue, const struct FLinearColor& CallFunc_SelectColor_ReturnValue, class UAbilitySystemComponent* K2Node_CustomEvent_AbilitySystemComponent_1, class UGameplayEffect* K2Node_CustomEvent_AddedEffect_1, const struct FGameplayEffectSpec& K2Node_CustomEvent_EffectSpec_1, const struct FActiveGameplayEffectHandle& K2Node_CustomEvent_ActiveEffectHandle_1, class UAGGameplayEffect* K2Node_DynamicCast_AsAGGameplay_Effect, bool K2Node_DynamicCast_bSuccess, UDelegateProperty_ K2Node_CreateDelegate_OutputDelegate_1, class UAbilitySystemComponent* K2Node_CustomEvent_AbilitySystemComponent, class UGameplayEffect* K2Node_CustomEvent_AddedEffect, const struct FGameplayEffectSpec& K2Node_CustomEvent_EffectSpec, const struct FActiveGameplayEffectHandle& K2Node_CustomEvent_ActiveEffectHandle, bool K2Node_SwitchEnum_CmpSuccess, class APlayerController* CallFunc_GetOwningPlayer_ReturnValue, class UWB_GasEffectIcon_C* CallFunc_Create_ReturnValue, class UWB_GasEffectIcon_C* CallFunc_Map_Find_Value, bool CallFunc_Map_Find_ReturnValue, class UPanelWidget* Temp_object_Variable, bool CallFunc_IsValid_ReturnValue_1, UDelegateProperty_ K2Node_CreateDelegate_OutputDelegate_2, const struct FGameplayAttribute& K2Node_CustomEvent_Attribute, float K2Node_CustomEvent_OldValue, float K2Node_CustomEvent_NewValue, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData, float CallFunc_FMax_ReturnValue, bool CallFunc_EqualEqual_GameplayAttributeGameplayAttribute_ReturnValue, class FText CallFunc_Conv_FloatToText_ReturnValue, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData_1, class UPanelWidget* Temp_object_Variable_1, class UAbilitySystemComponent* CallFunc_GetAbilitySystemComponent_ReturnValue, bool CallFunc_GetFloatAttributeFromAbilitySystemComponent_bSuccessfullyFoundAttribute, float CallFunc_GetFloatAttributeFromAbilitySystemComponent_ReturnValue, bool CallFunc_GetFloatAttributeFromAbilitySystemComponent_bSuccessfullyFoundAttribute_1, float CallFunc_GetFloatAttributeFromAbilitySystemComponent_ReturnValue_1, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData_2, const struct FFormatArgumentData& K2Node_MakeStruct_FormatArgumentData_3, TArray<struct FFormatArgumentData>& K2Node_MakeArray_Array, TArray<struct FFormatArgumentData>& K2Node_MakeArray_Array_1, class FText CallFunc_Format_ReturnValue, class FText CallFunc_Format_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue, TArray<struct FGameplayAttribute>& K2Node_MakeArray_Array_2, class UAbilitySystemComponent* CallFunc_GetAbilitySystemComponent_ReturnValue_1, class UAsyncTaskAttributeChanged* CallFunc_ListenForAttributesChange_ReturnValue, bool CallFunc_IsValid_ReturnValue_2, class ABP_AGPlayerState_C* K2Node_CustomEvent_Player, enum class EEffectType Temp_byte_Variable, class UPanelWidget* K2Node_Select_Default, class UPanelSlot* CallFunc_AddChild_ReturnValue);
+};
+
+}
+
+
