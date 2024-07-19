@@ -5,36 +5,22 @@ project(AimGods_Client_Core)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# Vcpkg
-if(DEFINED ENV{VCPKG_ROOT})
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-else()
-    message(FATAL_ERROR "Please set VCPKG_ROOT environment variable to vcpkg root directory")
-endif()
-
-
-
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../AimGods_Common/include)
 
-# Source files (all .cpp files from AimGods_Common/src)
-
-
 # Source files specific to Client
 file(GLOB SOURCES "src/*.cpp")
 
-#packages
-find_package(polyhook_2 CONFIG REQUIRED)
+# Create the DLL
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 #link libraries
-target_link_libraries(AimGods_Client_Core PRIVATE polyhook_2::polyhook_2)
-
-# Create the DLL
-add_library(AimGods_Client_Core SHARED ${SOURCES})
+find_package(minhook CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE minhook::minhook)
 
 # Set output properties
-set_target_properties(AimGods_Client_Core PROPERTIES 
+set_target_properties(${PROJECT_NAME} PROPERTIES 
     OUTPUT_NAME "AimGods_Client_Core"
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
