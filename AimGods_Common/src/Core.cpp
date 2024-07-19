@@ -20,7 +20,7 @@ HookDetails<T>* Core::getHookDetails(const std::string name)
         core.Log("Hook not found");
         return nullptr;
     }
-    //dynamic cast should be used here, however reinterpret_cast shows significant performance benefits
+    //dynamic cast should be used here, however reinterpret_cast is more performant
     HookDetails<T>* hook = reinterpret_cast<HookDetails<T>*>(hookbase);
     if (!hook) {
         core.Log("Dynamic cast failed for hook: " + name);
@@ -30,7 +30,7 @@ HookDetails<T>* Core::getHookDetails(const std::string name)
 }
 void Core::updateCore()
 {
-	while (true)
+	while (shouldUpdate)
 	{
 		std::this_thread::sleep_for(std::chrono::microseconds(5));
 	}

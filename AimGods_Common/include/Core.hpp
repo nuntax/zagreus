@@ -16,7 +16,7 @@ namespace Zagreus
 {
     class Game {
             public:
-                MapType currentMap;
+                MapType currentMap = MAPTYPE_MAX;
     };
 
     enum MapType {
@@ -51,6 +51,8 @@ namespace Zagreus
     typedef void(__fastcall *tRespawnPlayer)(void *, void *);
     class Core
     {
+        bool shouldUpdate = true;
+        Game game;
         std::ofstream fileStream;
         std::unordered_map<std::string, eventType> events;
         
