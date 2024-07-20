@@ -7,7 +7,19 @@
 DWORD WINAPI Main(LPVOID lpReserved)
 {
     Zagreus::Core& core = Zagreus::Core::getCore();
-    
+    core.registerEvent(Zagreus::eventType::GAME_INITIALIZED, [&]() {
+            core.Log("Game Initialized");
+            SDK::InitGObjects();
+            SDK::UGameEngine* engine = SDK::UGameEngine::GetEngine();
+            SDK::UGameplayStatics* gameplayStatics = SDK::UGameplayStatics::GetDefaultObj();
+            SDK::UGameViewportClient* viewport = engine->GameViewport;
+            if (!viewport->ViewportConsole) {
+                core.Log("Spawning console");
+                viewport->ViewportConsole = static_cast<SDK::UConsole*>(gameplayStatics->SpawnObject(SDK::UConsole::StaticClass(), viewport));
+                if (!viewport->ViewportConsole)
+                    core.Log("Failed to spawn console");
+            }
+        });
 	
 	return 0;
 }

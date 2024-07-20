@@ -9,15 +9,39 @@
 #include <unordered_map>
 #include <format>
 #include <thread>
-/// <summary>
-/// Core functionality for the mod, both Client and Server inherit from this class.
-/// </summary>
+#include <mutex>
+#include <unordered_set>
+
 namespace Zagreus
 {
-    class Game {
-            public:
-                MapType currentMap = MAPTYPE_MAX;
+    extern bool startUp;
+
+    struct ProcessEventData{
+        SDK::UObject* object;
+        SDK::UFunction* function;
+        void* params;
     };
+
+    static const std::unordered_set<std::string> functionsToSkip = {
+    "Waterfall",
+    //"Widget",
+    "Camera",
+    "HUD",
+    "Tick",
+    "Anim",
+    //"UpdateFunc",
+    //"WB",
+    //"ServerMoveNoBase",
+    //"ClientAckGoodMove",
+    //"UMG",
+    //"TextValue",
+    //"FloatValue",
+    //"ReplicatedWorldTimeSeconds",
+    //"CheckTarget",
+    //"ServerMoveOld",
+    //"OnLanded" 
+    };
+    bool ShouldLog(const std::string& FunctionName);
 
     enum MapType {
         TRANMAP,
@@ -28,7 +52,8 @@ namespace Zagreus
 
     enum eventType
     {
-        PROCESS_EVENT
+        PROCESS_EVENT,
+        GAME_INITIALIZED,
     };
     void hProcessEvent(SDK::UObject* object, SDK::UFunction* function, void* params);
     
@@ -49,12 +74,24 @@ namespace Zagreus
     typedef void(__fastcall *tNotifyBeginplay)(SDK::AWorldSettings *);
     typedef void(__fastcall *tHandleHasMatchStarted)(SDK::AAGGameMode *);
     typedef void(__fastcall *tRespawnPlayer)(void *, void *);
+
+    class gameDetails
+    {
+    public:
+        MapType currentMap;
+        SDK::UWorld* GWorld;  
+    };
+
+    /// <summary>
+    /// Core functionality for the mod, both Client and Server inherit from this class.
+    /// </summary>
     class Core
     {
+
         bool shouldUpdate = true;
-        Game game;
+        std::mutex processEventMutex;
+        ProcessEventData processEventData;
         std::ofstream fileStream;
-        std::unordered_map<std::string, eventType> events;
         
         virtual void LogBackend(const std::string& message);
         Core();
@@ -68,14 +105,17 @@ namespace Zagreus
         void updateCore();
         friend void hProcessEvent(SDK::UObject* object, SDK::UFunction* function, void* params);
         std::jthread thread;
-    public:
-        
-        void eventHandler()
-        {
-            
-        }
-        
         std::unordered_map<std::string, IHookDetails*> hooks;
+
+        
+        std::unordered_map<eventType, std::function<void()>> events;
+    public:
+   
+        void registerEvent(const eventType& eventtype, std::function<void()> func);
+
+
+        void fire(const eventType& eventtypes);
+
         /// 
         /// @return Returns the global Core instance
         /// 
@@ -90,11 +130,11 @@ namespace Zagreus
         static void staticLog(const std::string& message);
         /// 
         /// @tparam T Signature for the function of the wanted hook.
-        /// @param name Name of the hook, gets used to find the hook.
+        /// @param  Name of the hook, gets used to find the hook.
         /// @return Returns the HookDetails struct of the wanted hook.
         /// 
         template <typename T>
-        HookDetails<T>* getHookDetails(const std::string name);
+        HookDetails<T>* getHookDetails(const std::string& name);
     };
     
 }

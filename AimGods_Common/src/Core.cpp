@@ -1,17 +1,42 @@
 ﻿#include "Core.hpp"
+
 using namespace Zagreus;
 
+bool Zagreus::startUp = true;
 
+bool Zagreus::ShouldLog(const std::string& FunctionName) {
+    for (const auto& substr : functionsToSkip) {
+        if (FunctionName.find(substr) != std::string::npos) {
+            return false;
+        }
+    }
+    return true;
+}
 void Zagreus::hProcessEvent(SDK::UObject* object, SDK::UFunction* function, void* params)
 {
     Core& core = Core::getCore();
+    if(Zagreus::startUp)
+	{
+        Zagreus::startUp = false;
+        core.fire(eventType::GAME_INITIALIZED);
+	}
+	
     auto hook = core.getHookDetails<tProcessEvent>("ProcessEvent");
-    core.Log(object->GetName() +  " called function " + function->GetName().c_str());
+    core.processEventData = { object, function, params };
+    
+    if(!ShouldLog(function->GetFullName()))
+	{
+        return hook->rFunction(object, function, params);
+		
+	}
 
-    hook->rFunction(object, function, params);
+    core.Log("ProcessEvent: " + function->GetFullName() + "called by: " + object->GetFullName());
+    return hook->rFunction(object, function, params);
+
 }
+
 template<typename T>
-HookDetails<T>* Core::getHookDetails(const std::string name)
+HookDetails<T>* Core::getHookDetails(const std::string& name)
 {
     Core& core = Core::getCore();
     IHookDetails* hookbase = core.hooks[name];
@@ -28,13 +53,35 @@ HookDetails<T>* Core::getHookDetails(const std::string name)
     }
     return hook;
 }
+
 void Core::updateCore()
 {
+    this->Log("Updatecore started.");
 	while (shouldUpdate)
 	{
+        if (processEventData.object)
+		{
+			auto object = processEventData.object;
+			auto function = processEventData.function;
+			auto params = processEventData.params;
+		}
+        
 		std::this_thread::sleep_for(std::chrono::microseconds(5));
 	}
+    this->Log("Updatecore shutting down");
     return;
+}
+
+void Core::fire(const eventType& event)
+{
+    if (events.find(event) != events.end())
+	{
+		events[event]();
+	}
+	else
+	{
+		this->Log("Event not found: " + event);
+	}
 }
 
 void Core::LogBackend(const std::string& message)
@@ -72,7 +119,6 @@ Core::Core()
     }
 
     //Hook initialization
-
     HookDetails<tProcessEvent>* hook = new HookDetails<tProcessEvent>;
     hook->name = "ProcessEvent";
     hook->pattern = reinterpret_cast<const unsigned char*>("\x40\x55\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x81\xEC\xF0\x00\x00\x00\x00");
@@ -80,8 +126,16 @@ Core::Core()
     hook->hFunction = hProcessEvent;
     this->hook(hook);
     //create updateCore thread
-    thread = std::jthread(&Core::updateCore, this, nullptr, nullptr, nullptr);
+    thread = std::jthread(&Core::updateCore, this);
+    this->Log("Core initialized.");
 }
+
+void Core::registerEvent(const eventType& eventtype, std::function<void()> event)
+{
+	
+	events[eventtype] = event;
+}
+
 template <typename T>
 void Core::hook(HookDetails<T>* hook) {
 
