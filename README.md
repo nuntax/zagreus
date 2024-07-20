@@ -2,7 +2,7 @@
 This project aims to be a nearly one-to-one server replacement for the game **Aim Gods** by **Finalmouse Entertainment.**
 We are reaching that by injecting our code into the Game via DLL-Injection.
 
-
+# Development continues on master branch as a complete rewrite
 
 ## Solution Structure
 This project contains 2 CPP projects that compile DLLs for the client and for the Server.
