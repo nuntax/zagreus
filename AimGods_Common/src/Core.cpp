@@ -3,7 +3,15 @@
 using namespace Zagreus;
 
 bool Zagreus::startUp = true;
+std::string Zagreus::remove_numeric_suffix(const std::string& str) {
+    size_t pos = str.find_last_of('_');
 
+    if (pos != std::string::npos && pos > 0) {
+        return std::string(str.data(), pos);
+    }
+
+    return str;
+}
 bool Zagreus::ShouldLog(const std::string& FunctionName) {
     for (const auto& substr : functionsToSkip) {
         if (FunctionName.find(substr) != std::string::npos) {
@@ -15,22 +23,20 @@ bool Zagreus::ShouldLog(const std::string& FunctionName) {
 void Zagreus::hProcessEvent(SDK::UObject* object, SDK::UFunction* function, void* params)
 {
     Core& core = Core::getCore();
-    if(Zagreus::startUp)
-	{
+    if (Zagreus::startUp)
+    {
         Zagreus::startUp = false;
-        core.fire(eventType::GAME_INITIALIZED);
-	}
-	
-    auto hook = core.getHookDetails<tProcessEvent>("ProcessEvent");
-    core.processEventData = { object, function, params };
-    
-    if(!ShouldLog(function->GetFullName()))
-	{
-        return hook->rFunction(object, function, params);
-		
-	}
+        core.fireManaged(eventType::GAME_INITIALIZED, object, function, params);
+    }
+    core.fireRaw(object->GetName(), function->GetName(), object, function, params);
 
-    core.Log("ProcessEvent: " + function->GetFullName() + "called by: " + object->GetFullName());
+
+    auto hook = core.getHookDetails<tProcessEvent>("ProcessEvent");
+
+    if(GetAsyncKeyState(VK_CAPITAL) & (1 << 16) && Zagreus::ShouldLog(function->GetFullName()))
+    {
+        core.Log("ProcessEvent: " + function->GetName() + "called by: " + object->GetFullName());
+    }
     return hook->rFunction(object, function, params);
 
 }
@@ -57,44 +63,55 @@ HookDetails<T>* Core::getHookDetails(const std::string& name)
 void Core::updateCore()
 {
     this->Log("Updatecore started.");
-	while (shouldUpdate)
-	{
+    while (shouldUpdate)
+    {
         if (processEventData.object)
-		{
-			auto object = processEventData.object;
-			auto function = processEventData.function;
-			auto params = processEventData.params;
-		}
-        
-		std::this_thread::sleep_for(std::chrono::microseconds(5));
-	}
+        {
+            auto object = processEventData.object;
+            auto function = processEventData.function;
+            auto params = processEventData.params;
+        }
+
+        std::this_thread::sleep_for(std::chrono::microseconds(5));
+    }
     this->Log("Updatecore shutting down");
     return;
 }
 
-void Core::fire(const eventType& event)
+void Core::fireManaged(const eventType& event, SDK::UObject* objectname, SDK::UFunction* functionname, void* params)
 {
-    if (events.find(event) != events.end())
-	{
-		events[event]();
-	}
-	else
-	{
-		this->Log("Event not found: " + event);
-	}
+    if (managedEvents.find(event) != managedEvents.end())
+    {
+        managedEvents[event](objectname, functionname, params);
+    }
+    else
+    {
+        this->Log("Event not found: " + event);
+    }
+}
+
+void Core::fireRaw(std::string objectName, std::string functionName, SDK::UObject* object, SDK::UFunction* function, void* params) {
+        if (rawEvents[objectName].find(functionName) != rawEvents[objectName].end())
+		{
+			rawEvents[objectName][functionName](object, function, params);
+		}
+		else
+		{
+            return;
+		}
 }
 
 void Core::LogBackend(const std::string& message)
 {
     if (fileStream.is_open())
     {
-        fileStream << message << std::endl;
+        fileStream << message << "\n";
     }
     else
     {
-        std::cerr << "Unable to write to log file." << std::endl;
+        std::cerr << "Unable to write to log file." << "\n";
     }
-    std::cout << message << std::endl;
+    std::cout << message << "\n";
 }
 
 Core::Core()
@@ -130,10 +147,15 @@ Core::Core()
     this->Log("Core initialized.");
 }
 
-void Core::registerEvent(const eventType& eventtype, std::function<void()> event)
+void Core::registerManagedEvent(const eventType& eventtype, std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)> func)
 {
 	
-	events[eventtype] = event;
+	managedEvents[eventtype] = func;
+}
+
+void Zagreus::Core::registerRawEvent(std::string objectName, std::string functionName, std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)> func)
+{
+    rawEvents[objectName][functionName] = func;
 }
 
 template <typename T>

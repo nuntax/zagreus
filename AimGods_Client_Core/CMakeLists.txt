@@ -24,6 +24,8 @@ set(SDK_HEADERS ${SDKDIR}/Basic.hpp)
 varbuilder(CoreUObject SDK_SOURCES)
 varbuilder(AimGods SDK_SOURCES)
 varbuilder(Engine SDK_SOURCES)
+varbuilder(WB_Login SDK_SOURCES)
+
 message(STATUS "SDK Sources: ${SDK_SOURCES}")
 # Client sources
 file(GLOB CLIENT_SOURCES "src/*.cpp")

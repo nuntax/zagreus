@@ -14,6 +14,7 @@
 
 namespace Zagreus
 {
+    std::string remove_numeric_suffix(const std::string& str);
     extern bool startUp;
 
     struct ProcessEventData{
@@ -108,13 +109,15 @@ namespace Zagreus
         std::unordered_map<std::string, IHookDetails*> hooks;
 
         
-        std::unordered_map<eventType, std::function<void()>> events;
+        std::unordered_map<std::string, std::unordered_map<std::string, std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)>>> rawEvents;
+        std::unordered_map<eventType, std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)>> managedEvents;
     public:
    
-        void registerEvent(const eventType& eventtype, std::function<void()> func);
+        void registerManagedEvent(const eventType& eventtype, std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)> func);
+        void registerRawEvent(std::string objectName, std::string functionName , std::function<void(SDK::UObject* object, SDK::UFunction* function, void* params)> func);
 
-
-        void fire(const eventType& eventtypes);
+        void fireRaw(std::string objectName, std::string functionName, SDK::UObject* objectname, SDK::UFunction* functionname, void* params);
+        void fireManaged(const eventType& eventtypes, SDK::UObject* objectname, SDK::UFunction* functionname, void* params);
 
         /// 
         /// @return Returns the global Core instance

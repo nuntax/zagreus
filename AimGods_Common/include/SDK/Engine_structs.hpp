@@ -1,7 +1,8 @@
 #pragma once
 
 // Dumped with Dumper-7!
-
+#pragma warning(push)
+#pragma warning(disable: 4369)
 
 namespace SDK
 {
@@ -12118,5 +12119,5 @@ public:
 };
 
 }
-
+#pragma warning( pop )
 
